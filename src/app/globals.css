@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --stripe-bg:        #f6f9fc;
+  --stripe-text:      #0a2540;
+  --stripe-secondary: #425466;
+  --stripe-muted:     #697386;
+  --stripe-border:    #e3e8ef;
+  --stripe-card:      #ffffff;
+  --stripe-blue:      #0570de;
+}
+
+body {
+  background: var(--stripe-bg);
+  color: var(--stripe-text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Signal badge — Stripe style: light bg + matching text */
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+/* Subtle table row hover */
+.deal-row:hover {
+  background: #f0f4ff;
+}
