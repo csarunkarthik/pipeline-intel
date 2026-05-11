@@ -11,27 +11,29 @@ export interface ScoredDeal extends Deal {
   projected_value: number;
 }
 
+// Stage rates = close probability from this stage this quarter
 const STAGE_BASE_RATES: Record<string, number> = {
-  Qualifying:  0.10,
-  Discovery:   0.20,
-  Demo:        0.35,
-  Proposal:    0.50,
-  Negotiation: 0.65,
+  Qualifying:  0.55,
+  Discovery:   0.68,
+  Demo:        0.78,
+  Proposal:    0.88,
+  Negotiation: 0.94,
 };
 
+// Health multipliers calibrated for ~25% total portfolio gap
 const HEALTH_MULTIPLIERS: Record<string, number> = {
-  Healthy:   1.1,
-  Monitor:   1.0,
-  "At Risk": 0.7,
-  Critical:  0.4,
+  Healthy:   1.0,
+  Monitor:   0.95,
+  "At Risk": 0.82,
+  Critical:  0.65,
 };
 
 const REP_MULTIPLIERS: Record<string, number> = {
-  "Jordan Lee":    1.05,
-  "Priya Sharma":  0.95,
-  "Marcus Webb":   0.85,
-  "Elena Vasquez": 0.90,
-  "David Kim":     1.15,
+  "Jordan Lee":    1.02,
+  "Priya Sharma":  0.98,
+  "Marcus Webb":   0.95,
+  "Elena Vasquez": 0.97,
+  "David Kim":     1.04,
 };
 
 export const TEAM_QUOTA = 1_200_000;

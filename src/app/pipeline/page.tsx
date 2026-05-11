@@ -172,7 +172,7 @@ export default function PipelinePage() {
         className="rounded-xl border mb-5 overflow-hidden"
         style={{ borderColor: "var(--stripe-border)", backgroundColor: "var(--stripe-card)" }}
       >
-        <div className="grid grid-cols-4 divide-x" style={{ borderColor: "var(--stripe-border)" }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0" style={{ borderColor: "var(--stripe-border)" }}>
           <SummaryCell
             label="CRM Pipeline"
             value={fmt(totals.crm)}
@@ -208,12 +208,12 @@ export default function PipelinePage() {
         </div>
       </div>
 
-      <div className="flex gap-5">
+      <div className="flex flex-col lg:flex-row gap-5">
 
         {/* ── Sidebar filters ──────────────────────────────────────────────── */}
-        <aside className="w-48 shrink-0">
+        <aside className="w-full lg:w-48 shrink-0">
           <div
-            className="rounded-xl border p-4 space-y-4"
+            className="rounded-xl border p-4"
             style={{ borderColor: "var(--stripe-border)", backgroundColor: "var(--stripe-card)" }}
           >
             <div className="flex items-center justify-between">
@@ -234,10 +234,12 @@ export default function PipelinePage() {
               )}
             </div>
 
-            <FilterSelect label="Stage"    options={STAGES}        value={stage}    onChange={setStage} />
-            <FilterSelect label="Rep"      options={REPS}          value={rep}      onChange={setRep} />
-            <FilterSelect label="Health"   options={BANDS}         value={band}     onChange={setBand} />
-            <FilterSelect label="Forecast" options={FORECAST_CATS} value={forecast} onChange={setForecast} />
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 mt-3">
+              <FilterSelect label="Stage"    options={STAGES}        value={stage}    onChange={setStage} />
+              <FilterSelect label="Rep"      options={REPS}          value={rep}      onChange={setRep} />
+              <FilterSelect label="Health"   options={BANDS}         value={band}     onChange={setBand} />
+              <FilterSelect label="Forecast" options={FORECAST_CATS} value={forecast} onChange={setForecast} />
+            </div>
 
             <label className="flex items-center gap-2 cursor-pointer pt-1">
               <div
@@ -262,7 +264,8 @@ export default function PipelinePage() {
           className="flex-1 min-w-0 rounded-xl border overflow-hidden"
           style={{ borderColor: "var(--stripe-border)", backgroundColor: "var(--stripe-card)" }}
         >
-          <table className="w-full text-sm border-collapse">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse" style={{ minWidth: 760 }}>
             <thead>
               <tr style={{ borderBottom: "1px solid var(--stripe-border)", backgroundColor: "#f8fafc" }}>
                 {/* color strip */}
@@ -380,6 +383,8 @@ export default function PipelinePage() {
               })}
             </tbody>
           </table>
+
+          </div>{/* end overflow-x-auto */}
 
           {/* Table footer */}
           {filtered.length > 0 && (
